@@ -1,7 +1,7 @@
 def convert_temp(unit_in, unit_out, temp):
     """Convert fahrenheit <-> celsius and return results.
 
-    - unit_in: either "f" or "c" 
+    - unit_in: either "f" or "c"
     - unit-out: either "f" or "c"
     - temp: temperature (in f or c, depending on unit_in)
 
@@ -14,8 +14,20 @@ def convert_temp(unit_in, unit_out, temp):
       convert_temp("c", "f", 0)  =>  32.0
       convert_temp("f", "c", 212) => 100.0
     """
+    if unit_in == "c" and unit_out == "f":
+        new_temp_f = temp * 1.8 + 32
+        return new_temp_f
+    if unit_in == "f" and unit_out == "c":
+        new_temp_c = (temp - 32) * 5/9
+        return new_temp_c
+    if unit_in == unit_out:
+        new_temp = temp
+        return new_temp
+    if unit_in != "c" or "f":
+        return f"Invalid unit {unit_in}"
+    if unit_out != "c" or "f":
+        return f"Invalid unit {unit_out}"
 
-    # YOUR CODE HERE
 
 
 print("c", "f", 0, convert_temp("c", "f", 0), "should be 32.0")
